@@ -1,0 +1,9 @@
+.addToCart{
+    margin: 10px;
+}
+
+.clothings{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
