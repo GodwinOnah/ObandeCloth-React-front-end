@@ -16,12 +16,12 @@ const [progress,setProgress] = useState({started:false, pc:0});
 const [message,setMessage] = useState("");
 const thisFormData = new FormData();
 
+
 useEffect(()=>{
-  fetch("http://localhost:3001/userx").then(res =>{
-    if(res)
-    setUserX(res.data);
-    console.log(res.data)
-  })
+  axios.get('http://localhost:3001/userx').then(res =>{
+    if(res) setUserX(res.data); 
+    return;
+})
 },[]);
 
 const userY = () =>{
@@ -29,7 +29,7 @@ const userY = () =>{
     <table class="table table-hover">
     <thead>
          <tr>
-         <th>USER</th>
+         <th>USER/ID</th>
          <th>FIRST NAME</th>
          <th>LAST NAME</th>
          <th>EMAIL</th>
@@ -41,9 +41,9 @@ const userY = () =>{
              {
              userX?.map((user,index)=>(
                <tr key = {index}>              
-               <th >{index}</th>
-               <td>{user.firstName}</td>
-               <td>{user.lastName}</td>
+               <th >{index+1}</th>
+               <td>{user.firstname}</td>
+               <td>{user.lastname}</td>
                <td>{user.email}</td>
                <td>{user.address}</td>
                <td>{user.phone}</td>              
@@ -69,8 +69,8 @@ const userY = () =>{
     if(thisFormData == null) setMessage("No File attached");
 
 fetch('http://localhost:3001/clothings',
-    { 
-      method:'POST',
+    {  
+      method:'POST', 
       headers:{
       "Access-Control-Allow-Origin":"*",
       "Content-Type": "application/json"

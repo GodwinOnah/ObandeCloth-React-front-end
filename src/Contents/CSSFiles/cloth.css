@@ -1,3 +1,8 @@
 .containerL{
-    width: fit-content;
+    width: 150%;
+    margin: 40%;
+}
+
+.cardL{
+    width: 100%;
 }

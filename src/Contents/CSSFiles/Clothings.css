@@ -3,7 +3,11 @@
 }
 
 .clothings{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+   justify-content: center;
+    padding: 5%;
+    margin-left: 0;
+   display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(30%,1fr));
+   grid-template-rows: repeat(auto-fill,minmax(15%,1fr)); 
     place-items: center;
 }

@@ -18,36 +18,37 @@ export const Signup = () =>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-      
-
+    
       const handleSubmit = (e) =>{
         e.preventDefault();
         SetIsSigningIn(true);
-        const datax = {firstName,lastName,email,address,phone, password};
-    
+           
       if(password !== confirmPassword){
         toast.warning("Password missmatch");
         SetIsSigningIn(false);
         return;
       }
     
-      if(password === confirmPassword){
-        SetData(datax);
-      fetch("http://localhost:3001/userx",
+      const datax = {firstName,lastName,email,address,phone, password};
+      SetData(datax);
+
+      fetch('http://localhost:3001/userx',
      {
-      method: 'POST',
+      method:'POST',
       headers:{
+        "Access-Control-Allow-Origin":"*",
           "Content-Type": "application/json"
        },
       body: JSON.stringify(data)
-      }).then(res =>{
+      }
+      ).then(res =>{
         return res.text();      
            }).then(res =>{           
             toast.success(res);
             SetIsSigningIn(false); 
             handleClose();    
                })
-          };
+         
       }
 
   const SignupModal = ()=>{
